@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Proj1</title>
+    <title>Магазин</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,6 +13,9 @@
   <body>
     <div class = 'menu'>
     <%= render 'layouts/menu' %>
+    </div>
+    <div class = 'cart'>
+         <%= render 'layouts/cart' %>
     </div>
     <div class = 'main'>
     <%= yield %>
