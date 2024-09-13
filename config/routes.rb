@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'cart', to: 'cart#show'
+  post 'cart/add'
+  post 'cart/remove'
   resources :products
   resources :users
   get 'dialogs/welcome'
@@ -9,10 +12,10 @@ Rails.application.routes.draw do
   get 'dialogs/date_info'
 
 
-  
-  get 'welcome/start'
+
+  # get 'welcome/start'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "welcome#start"
 end

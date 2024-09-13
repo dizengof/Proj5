@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render partial: "cart/cart" if @render_cart %>
     <div class = 'menu'>
     <%= render 'layouts/menu' %>
     </div>

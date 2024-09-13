@@ -10,9 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_25_232859) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_13_092401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name", limit: 32, null: false
@@ -26,6 +31,40 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_232859) do
     t.bigint "product_id", null: false
     t.index ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id"
     t.index ["product_id", "category_id"], name: "index_categories_products_on_product_id_and_category_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "cart_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_items_on_cart_id"
+    t.index ["product_id"], name: "index_items_on_product_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity", default: 1
+    t.integer "product_id"
+    t.integer "cart_id"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders_products", id: false, force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "order_id", null: false
+    t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id"
+    t.index ["product_id", "order_id"], name: "index_orders_products_on_product_id_and_order_id"
   end
 
   create_table "producers", force: :cascade do |t|
@@ -48,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_232859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "producer_id"
+    t.integer "discount"
     t.index ["producer_id"], name: "index_products_on_producer_id"
     t.check_constraint "guarantee = ANY (ARRAY[0, 1])", name: "guarantee_check"
     t.check_constraint "price > 0::numeric", name: "price_check"
@@ -62,5 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_232859) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "items", "carts"
+  add_foreign_key "items", "products"
   add_foreign_key "products", "producers"
 end
