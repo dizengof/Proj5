@@ -1,9 +1,4 @@
-<h1>Корзина</h1>
-<% @cart.items.each do |item| %>
-  <% product = item.product %>
-
-  <div id="<%= "cart-#{product.id}" %>">
-     <p>
+<p>
     <strong>Наименование:</strong>
     <%= product.name %>
   </p>
@@ -42,10 +37,3 @@
     <strong>Скидка:</strong>
     <%= product.discount %>
   </p>
-
-    <strong>Стоимость:</strong>
-    <%= item.total %>
-
-</div>
-<% end %>
-<p>Итого к оплате: <%= @cart.total %> рублей.</p>

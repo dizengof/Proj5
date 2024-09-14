@@ -1,6 +1,6 @@
 <% if session['user'].blank? %>
 <h1>
-Пожалуйста авторизуйтесь!
+Пожалуйста, авторизуйтесь!
 </h1>
 <%= form_tag({controller: :welcome, action: :start}, method: :get) do %>
 <%= text_field_tag(:login, '', placeholder: 'Логин') %>

@@ -1,48 +1,48 @@
 <div id="<%= dom_id product %>">
   <p>
-    <strong>Name:</strong>
+    <strong>Наименование:</strong>
     <%= product.name %>
   </p>
 
   <p>
-    <strong>Full name:</strong>
+    <strong>Полное наименование:</strong>
     <%= product.full_name %>
   </p>
 
   <p>
-    <strong>Price:</strong>
+    <strong>Цена:</strong>
     <%= product.price %>
   </p>
 
   <p>
-    <strong>Description:</strong>
+    <strong>Описание:</strong>
     <%= product.description %>
   </p>
 
   <p>
-    <strong>Production date:</strong>
+    <strong>Дата производства:</strong>
     <%= product.production_date %>
   </p>
 
   <p>
-    <strong>Guarantee:</strong>
+    <strong>Гарантия:</strong>
     <%= product.guarantee %>
   </p>
 
   <p>
-    <strong>Producer:</strong>
+    <strong>Производитель:</strong>
     <%= product.producer_id %>
   </p>
 
   <p>
-    <strong>Discount:</strong>
+    <strong>Скидка:</strong>
     <%= product.discount %>
   </p>
 
   <%= form_with(url: cart_add_path) do |f| %>
     <%= f.hidden_field :id, value: product.id %>
     <%= f.number_field :quantity, value: 0, min: 1 %>
-    <%= f.submit "Add To Cart" %>
+    <%= f.submit "Добавить в корзину" %>
   <% end %>
 
 </div>
