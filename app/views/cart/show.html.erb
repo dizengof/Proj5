@@ -14,11 +14,6 @@
   </p>
 
   <p>
-    <strong>Цена:</strong>
-    <%= product.price %>
-  </p>
-
-  <p>
     <strong>Описание:</strong>
     <%= product.description %>
   </p>
@@ -43,9 +38,20 @@
     <%= product.discount %>
   </p>
 
+  <p>
+    <strong>Цена:</strong>
+    <%= product.price %>
+  </p>
+
+  <p>
+    <strong>Количество:</strong>
+    <%= item.quantity %>
+  </p>
+
     <strong>Стоимость:</strong>
     <%= item.total %>
 
 </div>
+<br>
 <% end %>
-<p>Итого к оплате: <%= @cart.total %> рублей.</p>
+<p><strong>Итого к оплате:</strong> <%= @cart.total %> рублей.</p>
