@@ -7,12 +7,12 @@
     <%= product.name %>
     <strong>Цена:</strong>
     <%= product.price %>
-
-  <%= form_with(url: cart_add_path) do |f| %>
+    
+    <%= form_with(url: cart_add_path) do |f| %>
     <%= f.hidden_field :id, value: product.id %>
     <%= f.number_field :quantity, value: item.quantity, min: 0 %>
     <%= f.submit "Добавить" %>
-  <% end %>
+    <% end %>
 
     <%= form_with(url: cart_remove_path) do |f| %>
     <%= f.hidden_field :id, value: item.id %>
