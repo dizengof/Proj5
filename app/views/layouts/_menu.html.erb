@@ -1,15 +1,17 @@
-<h1>Магазин</h1>
-<ul>
-<li>
+<div class="container">
+<h2 class="m-3">Магазин</h2>
+<ul class="me-5 list-group list-group-flush list-group-item-action active">
+<li class="list-group-item list-group-item-action">
 <%= link_to('Товары', products_path) %>
 </li>
-<li>
+<li class="list-group-item list-group-item-action">
 <%= link_to('Пользователи', users_path) %>
 </li>
-<li>
+<li class="list-group-item list-group-item-action">
 <%= link_to('Диалог', {controller: :dialogs, action: :welcome}) %>
 </li>
-<li>
+<li class="list-group-item list-group-item-action">
 <%= link_to('Корзина', {controller: :cart, action: :show}) %>
 </li>
 </ul>
+</div>

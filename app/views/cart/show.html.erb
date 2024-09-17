@@ -1,57 +1,43 @@
-<h1>Корзина</h1>
-<% @cart.items.each do |item| %>
+<h2 class="m-3">Корзина</h2>
+ <div class="container">
+  <div class="row row-cols-3 g-4">
+  <% @cart.items.each do |item| %>
   <% product = item.product %>
-
-  <div id="<%= "cart-#{product.id}" %>">
+  <div id="<%= "cart-#{product.id}" %>" class="col">
+    <div class="card h-100">
+        <div class="card-body">
+        <h5 class="card-title"><%= product.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"> <%= product.full_name %></h6>
   <p>
-    <strong>Наименование:</strong>
-    <%= product.name %>
-  </p>
-
-  <p>
-    <strong>Полное наименование:</strong>
-    <%= product.full_name %>
-  </p>
-
-  <p>
-    <strong>Описание:</strong>
     <%= product.description %>
-  </p>
-
-  <p>
+</p>
+<p>
     <strong>Дата производства:</strong>
-    <%= product.production_date %>
-  </p>
-
-  <p>
+    <%= product.production_date %>.
     <strong>Гарантия:</strong>
-    <%= product.guarantee %>
-  </p>
-
-  <p>
+    <%= product.guarantee %>.
     <strong>Производитель:</strong>
     <%= product.producer_id %>
   </p>
-
-  <p>
-    <strong>Скидка:</strong>
-    <%= product.discount %>
-  </p>
-
   <p>
     <strong>Цена:</strong>
     <%= product.price %>
   </p>
-
+  <p>
+   <strong>Скидка:</strong>
+    <%= product.discount %>
+  </p>
   <p>
     <strong>Количество:</strong>
     <%= item.quantity %>
   </p>
-
     <strong>Стоимость:</strong>
     <%= item.total %>
-
-</div>
+   </div>
+   </div>
+   </div>
 <br>
 <% end %>
-<p><strong>Итого к оплате:</strong> <%= @cart.total %> рублей.</p>
+</div>
+</div>
+<h5 class="m-3"><strong>Итого к оплате:</strong> <%= @cart.total %> рублей.</h5>

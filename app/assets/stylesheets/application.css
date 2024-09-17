@@ -14,15 +14,16 @@
  *= require_self
  */
 
- * {
+* {
     box-sizing: border-box;
-  }
+}
 
-  .menu {
+.menu {
     width: 25%;
     float: left;
-  }
-  .main {
+}
+
+.main {
     width: 75%;
     float: left;
-  }
+}
