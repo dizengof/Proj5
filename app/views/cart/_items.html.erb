@@ -1,26 +1,31 @@
+<tbody>
 <% @cart.items.each do |item| %>
     <% product = item.product %>
-
     <div id="<%= "cart-#{product.id}" %>">
-    <div style="display:flex;justify-content:space-between;margin: 0em 5em;">
-    <strong>Наименование:</strong>
+    <tr>
+    <td>
     <%= product.name %>
-    <strong>Цена:</strong>
+    </td>
+    <td>
     <%= product.price %>
-    
+    </td>
+    <td>
     <%= form_with(url: cart_add_path) do |f| %>
     <%= f.hidden_field :id, value: product.id %>
     <%= f.number_field :quantity, value: item.quantity, min: 0 %>
     <%= f.submit "Добавить" %>
     <% end %>
-
+    </td>
+    <td>
     <%= form_with(url: cart_remove_path) do |f| %>
     <%= f.hidden_field :id, value: item.id %>
     <%= f.submit "Удалить" %>
     <% end %>
-
-    <strong>Стоимость:</strong>
+    </td>
+    <td>
     <%= item.total %>
-</div>
-</div>
+    </td>
+    <tr>
+    </div>
 <% end %>
+</tbody>

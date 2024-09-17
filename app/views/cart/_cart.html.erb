@@ -1,8 +1,19 @@
 <%= turbo_frame_tag "cart" do %>
     <h1>Корзина</h1>
     <% if @cart.items.count > 0 %>
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th>Изменить количество</th>
+                <th>Удалить товар</th>
+                <th>Стоимость</th>
+            </tr>
+        </thead>
         <%= render "cart/items" %>
-        <p>Итого: <%= @cart.total%> </p>
+        </table>
+        <p><strong>Итого: </strong><%= @cart.total%> </p>
         <% else %>
         <p>Корзина пуста</p>
     <% end %>
